@@ -1,0 +1,3 @@
+# Ignore Python bytecode files
+src/utils/read/__pycache__/
+src/aes/__pycache__/

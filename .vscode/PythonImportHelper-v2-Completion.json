@@ -1,0 +1,150 @@
+[
+    {
+        "label": "read_plaintext",
+        "importPath": "utils.read.readMessage",
+        "description": "utils.read.readMessage",
+        "isExtraImport": true,
+        "detail": "utils.read.readMessage",
+        "documentation": {}
+    },
+    {
+        "label": "convert_to_ascii",
+        "importPath": "utils.helpers.convert",
+        "description": "utils.helpers.convert",
+        "isExtraImport": true,
+        "detail": "utils.helpers.convert",
+        "documentation": {}
+    },
+    {
+        "label": "ascii_to_hex",
+        "importPath": "utils.helpers.convert",
+        "description": "utils.helpers.convert",
+        "isExtraImport": true,
+        "detail": "utils.helpers.convert",
+        "documentation": {}
+    },
+    {
+        "label": "create_initial_state_with_hex_values",
+        "importPath": "aes.helpers",
+        "description": "aes.helpers",
+        "isExtraImport": true,
+        "detail": "aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "create_initial_state_with_ascii_values",
+        "importPath": "aes.helpers",
+        "description": "aes.helpers",
+        "isExtraImport": true,
+        "detail": "aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "creat_ascii_values_array",
+        "kind": 2,
+        "importPath": "src.aes.helpers",
+        "description": "src.aes.helpers",
+        "peekOfCode": "def creat_ascii_values_array(ascii_values):\n    \"\"\"\n    Divide the plaintext into 16-byte blocks to obtain the initial state.\n    \"\"\"\n    initial_state = []\n    for i in range(0, len(ascii_values), 16):\n        block = ascii_values[i : i + 16]\n        initial_state.append(block)\n    return initial_state\ndef create_initial_state_with_hex_values(hex_values):",
+        "detail": "src.aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "create_initial_state_with_hex_values",
+        "kind": 2,
+        "importPath": "src.aes.helpers",
+        "description": "src.aes.helpers",
+        "peekOfCode": "def create_initial_state_with_hex_values(hex_values):\n    \"\"\"\n    Format hexadecimal values into a 2D array with columns of 4, transposed.\n    \"\"\"\n    num_rows = len(hex_values) // 4\n    hex_matrix = [hex_values[i : i + 4] for i in range(0, len(hex_values), 4)]\n    transposed_hex_matrix = [[row[i] for row in hex_matrix] for i in range(4)]\n    return transposed_hex_matrix\ndef create_initial_state_with_ascii_values(ascii_values):\n    \"\"\"",
+        "detail": "src.aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "create_initial_state_with_ascii_values",
+        "kind": 2,
+        "importPath": "src.aes.helpers",
+        "description": "src.aes.helpers",
+        "peekOfCode": "def create_initial_state_with_ascii_values(ascii_values):\n    \"\"\"\n    Format hexadecimal values into a 2D matrix with columns of 4, transposed.\n    \"\"\"\n    num_rows = len(ascii_values) // 4\n    hex_matrix = [ascii_values[i : i + 4] for i in range(0, len(ascii_values), 4)]\n    transposed_hex_matrix = [[row[i] for row in hex_matrix] for i in range(4)]\n    return transposed_hex_matrix",
+        "detail": "src.aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "convert_to_ascii",
+        "kind": 2,
+        "importPath": "src.utils.helpers.convert",
+        "description": "src.utils.helpers.convert",
+        "peekOfCode": "def convert_to_ascii(plaintext):\n    \"\"\"\n    Convert each character in the plaintext to its ASCII representation.\n    \"\"\"\n    ascii_values = [ord(char) for char in plaintext]\n    return ascii_values\ndef ascii_to_hex(ascii_values):\n    \"\"\"\n    Convert an array of ASCII values to hexadecimal representation.\n    \"\"\"",
+        "detail": "src.utils.helpers.convert",
+        "documentation": {}
+    },
+    {
+        "label": "ascii_to_hex",
+        "kind": 2,
+        "importPath": "src.utils.helpers.convert",
+        "description": "src.utils.helpers.convert",
+        "peekOfCode": "def ascii_to_hex(ascii_values):\n    \"\"\"\n    Convert an array of ASCII values to hexadecimal representation.\n    \"\"\"\n    hex_array = [hex(value)[2:].zfill(2) for value in ascii_values]\n    return hex_array",
+        "detail": "src.utils.helpers.convert",
+        "documentation": {}
+    },
+    {
+        "label": "read_plaintext",
+        "kind": 2,
+        "importPath": "src.utils.read.readMessage",
+        "description": "src.utils.read.readMessage",
+        "peekOfCode": "def read_plaintext(file_path):\n    \"\"\"\n    Read plaintext from a file and return it as a string.\n    \"\"\"\n    with open(file_path, \"r\") as file:\n        plaintext = file.read()\n    return plaintext",
+        "detail": "src.utils.read.readMessage",
+        "documentation": {}
+    },
+    {
+        "label": "plaintext_file_path",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "plaintext_file_path = \"data/plaintext.txt\"\nprint(\"plaintext_file_path:\\n\", plaintext_file_path)\nplaintext = read_plaintext(plaintext_file_path)\nprint(\"plaintext:\\n\", plaintext)\n# padded_plaintext = pad_plaintext(plaintext)\nascii_values = convert_to_ascii(plaintext)\nprint(\"ascii_values:\\n\", ascii_values)\nhex_values = ascii_to_hex(ascii_values)\nprint(\"hex_values:\\n\", hex_values)\ninitial_state_in_hex_values = create_initial_state_with_hex_values(hex_values)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "plaintext",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "plaintext = read_plaintext(plaintext_file_path)\nprint(\"plaintext:\\n\", plaintext)\n# padded_plaintext = pad_plaintext(plaintext)\nascii_values = convert_to_ascii(plaintext)\nprint(\"ascii_values:\\n\", ascii_values)\nhex_values = ascii_to_hex(ascii_values)\nprint(\"hex_values:\\n\", hex_values)\ninitial_state_in_hex_values = create_initial_state_with_hex_values(hex_values)\nprint(\"initial_state_in_hex_values:\\n\", initial_state_in_hex_values)\ninitial_state_in_ascii_values = create_initial_state_with_ascii_values(ascii_values)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "ascii_values",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "ascii_values = convert_to_ascii(plaintext)\nprint(\"ascii_values:\\n\", ascii_values)\nhex_values = ascii_to_hex(ascii_values)\nprint(\"hex_values:\\n\", hex_values)\ninitial_state_in_hex_values = create_initial_state_with_hex_values(hex_values)\nprint(\"initial_state_in_hex_values:\\n\", initial_state_in_hex_values)\ninitial_state_in_ascii_values = create_initial_state_with_ascii_values(ascii_values)\nprint(\"initial_state_in_ascii_values:\\n\", initial_state_in_ascii_values)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "hex_values",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "hex_values = ascii_to_hex(ascii_values)\nprint(\"hex_values:\\n\", hex_values)\ninitial_state_in_hex_values = create_initial_state_with_hex_values(hex_values)\nprint(\"initial_state_in_hex_values:\\n\", initial_state_in_hex_values)\ninitial_state_in_ascii_values = create_initial_state_with_ascii_values(ascii_values)\nprint(\"initial_state_in_ascii_values:\\n\", initial_state_in_ascii_values)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "initial_state_in_hex_values",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "initial_state_in_hex_values = create_initial_state_with_hex_values(hex_values)\nprint(\"initial_state_in_hex_values:\\n\", initial_state_in_hex_values)\ninitial_state_in_ascii_values = create_initial_state_with_ascii_values(ascii_values)\nprint(\"initial_state_in_ascii_values:\\n\", initial_state_in_ascii_values)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "initial_state_in_ascii_values",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "initial_state_in_ascii_values = create_initial_state_with_ascii_values(ascii_values)\nprint(\"initial_state_in_ascii_values:\\n\", initial_state_in_ascii_values)",
+        "detail": "src.main",
+        "documentation": {}
+    }
+]

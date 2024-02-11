@@ -10,18 +10,26 @@
     },
     {
         "label": "read_plaintext",
-        "importPath": "utils.read.readFile",
-        "description": "utils.read.readFile",
+        "importPath": "utils.files.readWrite",
+        "description": "utils.files.readWrite",
         "isExtraImport": true,
-        "detail": "utils.read.readFile",
+        "detail": "utils.files.readWrite",
         "documentation": {}
     },
     {
         "label": "read_subkeys",
-        "importPath": "utils.read.readFile",
-        "description": "utils.read.readFile",
+        "importPath": "utils.files.readWrite",
+        "description": "utils.files.readWrite",
         "isExtraImport": true,
-        "detail": "utils.read.readFile",
+        "detail": "utils.files.readWrite",
+        "documentation": {}
+    },
+    {
+        "label": "write_to_file",
+        "importPath": "utils.files.readWrite",
+        "description": "utils.files.readWrite",
+        "isExtraImport": true,
+        "detail": "utils.files.readWrite",
         "documentation": {}
     },
     {
@@ -213,6 +221,33 @@
         "documentation": {}
     },
     {
+        "label": "read_plaintext",
+        "kind": 2,
+        "importPath": "src.utils.files.readWrite",
+        "description": "src.utils.files.readWrite",
+        "peekOfCode": "def read_plaintext(file_path):\n    \"\"\"\n    Read plaintext from a file and return it as a string.\n    \"\"\"\n    with open(file_path, \"r\") as file:\n        plaintext = file.read()\n    return plaintext\ndef read_subkeys(file_path):\n    \"\"\"\n    Read subkeys from a file and return them as a list.",
+        "detail": "src.utils.files.readWrite",
+        "documentation": {}
+    },
+    {
+        "label": "read_subkeys",
+        "kind": 2,
+        "importPath": "src.utils.files.readWrite",
+        "description": "src.utils.files.readWrite",
+        "peekOfCode": "def read_subkeys(file_path):\n    \"\"\"\n    Read subkeys from a file and return them as a list.\n    \"\"\"\n    with open(file_path, \"r\") as file:\n        subkeys = file.read().splitlines()\n    return subkeys\ndef write_to_file(file_path, data):\n    \"\"\"\n    Write data to a file.",
+        "detail": "src.utils.files.readWrite",
+        "documentation": {}
+    },
+    {
+        "label": "write_to_file",
+        "kind": 2,
+        "importPath": "src.utils.files.readWrite",
+        "description": "src.utils.files.readWrite",
+        "peekOfCode": "def write_to_file(file_path, data):\n    \"\"\"\n    Write data to a file.\n    \"\"\"\n    with open(file_path, \"w\") as file:\n        for item in data:\n            if isinstance(item, list):\n                if len(item) > 0 and isinstance(\n                    item[0], list\n                ):  # Check if item is a 2D list (like a matrix)",
+        "detail": "src.utils.files.readWrite",
+        "documentation": {}
+    },
+    {
         "label": "convert_to_ascii",
         "kind": 2,
         "importPath": "src.utils.helpers.convert",
@@ -228,24 +263,6 @@
         "description": "src.utils.helpers.convert",
         "peekOfCode": "def ascii_to_hex(ascii_values):\n    \"\"\"\n    Convert an array of ASCII values to hexadecimal representation.\n    \"\"\"\n    hex_array = [hex(value)[2:].zfill(2) for value in ascii_values]\n    return hex_array",
         "detail": "src.utils.helpers.convert",
-        "documentation": {}
-    },
-    {
-        "label": "read_plaintext",
-        "kind": 2,
-        "importPath": "src.utils.read.readFile",
-        "description": "src.utils.read.readFile",
-        "peekOfCode": "def read_plaintext(file_path):\n    \"\"\"\n    Read plaintext from a file and return it as a string.\n    \"\"\"\n    with open(file_path, \"r\") as file:\n        plaintext = file.read()\n    return plaintext\ndef read_subkeys(file_path):\n    \"\"\"\n    Read subkeys from a file and return them as a list.",
-        "detail": "src.utils.read.readFile",
-        "documentation": {}
-    },
-    {
-        "label": "read_subkeys",
-        "kind": 2,
-        "importPath": "src.utils.read.readFile",
-        "description": "src.utils.read.readFile",
-        "peekOfCode": "def read_subkeys(file_path):\n    \"\"\"\n    Read subkeys from a file and return them as a list.\n    \"\"\"\n    with open(file_path, \"r\") as file:\n        subkeys = file.read().splitlines()\n    return subkeys",
-        "detail": "src.utils.read.readFile",
         "documentation": {}
     },
     {

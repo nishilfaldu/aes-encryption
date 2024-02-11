@@ -1,0 +1,89 @@
+plaintext_file_path:
+data/plaintext.txt
+plaintext:
+Two One Nine Two
+ascii_values:
+84 119 111 32 79 110 101 32 78 105 110 101 32 84 119 111
+
+hex_values:
+54 77 6f 20 4f 6e 65 20 4e 69 6e 65 20 54 77 6f
+
+initial_state_in_hex_values:
+54 4f 4e 20
+77 6e 69 54
+6f 65 6e 77
+20 20 65 6f
+
+initial_state_in_ascii_values:
+99 235 159 160
+47 147 146 192
+175 199 171 48
+162 32 203 43
+
+subkeys_file_path:
+data/subkey_example.txt
+subkeys:
+5468617473206d79204b756e67204675 e232fcf191129188b159e4e6d679a293
+
+subkey_0:
+5468617473206d79204b756e67204675
+subkey_0_matrix_in_ascii_values:
+84 115 32 103
+104 32 75 32
+97 109 117 70
+116 121 110 117
+
+subkey_0_matrix_in_hex_values:
+54 73 20 67
+68 20 4b 20
+61 6d 75 46
+74 79 6e 75
+
+state_in_ascii_after_add_round_key:
+99 235 159 160
+47 147 146 192
+175 199 171 48
+162 32 203 43
+
+state_in_hex_after_add_round_key:
+00 3c 6e 47
+1f 4e 22 74
+0e 08 1b 31
+54 59 0b 1a
+
+state_in_ascii_after_sub_bytes:
+99 235 159 160
+47 147 146 192
+175 199 171 48
+162 32 203 43
+
+state_in_hex_after_sub_bytes:
+63 eb 9f a0
+c0 2f 93 92
+ab 30 af c7
+20 cb 2b a2
+
+state_in_ascii_after_shift_rows:
+99 235 159 160
+47 147 146 192
+175 199 171 48
+162 32 203 43
+
+state_in_hex_after_shift_rows:
+63 eb 9f a0
+2f 93 92 c0
+af c7 ab 30
+a2 20 cb 2b
+
+state_in_ascii_after_mix_columns:
+186 132 232 27
+373 164 141 320
+244 397 6 125
+378 306 14 349
+
+state_in_hex_after_mix_columns:
+ba 84 e8 1b
+175 a4 8d 140
+f4 18d 06 7d
+17a 132 0e 15d
+

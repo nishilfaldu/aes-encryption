@@ -1,15 +1,16 @@
-from utils.read.readFile import read_plaintext
+from utils.files.readWrite import read_plaintext
 from utils.helpers.convert import convert_to_ascii
 from utils.helpers.convert import ascii_to_hex
 from aes.helpers import create_initial_state_with_hex_values
 from aes.helpers import create_initial_state_with_ascii_values
-from utils.read.readFile import read_subkeys
+from utils.files.readWrite import read_subkeys
 from aes.helpers import hex_to_ascii_matrix
 from aes.helpers import add_round_key
 from aes.subBytes import sub_bytes
 from aes.shiftRows import shift_rows
 from aes.helpers import ascii_matrix_to_hex
 from aes.mixColumns import mix_columns
+from utils.files.readWrite import write_to_file
 
 
 # Part 1
@@ -120,3 +121,5 @@ output_data = [
     "state_in_hex_after_mix_columns:",
     state_in_hex_after_mix_columns,
 ]
+
+write_to_file(output_file_path, output_data)

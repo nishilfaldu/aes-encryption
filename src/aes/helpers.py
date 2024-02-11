@@ -31,18 +31,24 @@ def create_initial_state_with_ascii_values(ascii_values):
 
 def hex_to_ascii_matrix(hex_string):
     """
-    Convert a hexadecimal string to a 2D matrix of bytes.
+    Convert a hexadecimal string to a transposed 2D matrix of bytes.
     """
     matrix = []
-    for i in range(0, len(hex_string), 8):  # 8 characters represent 1 row
-        row = [
-            int(hex_string[i : i + 2], 16),
-            int(hex_string[i + 2 : i + 4], 16),
-            int(hex_string[i + 4 : i + 6], 16),
-            int(hex_string[i + 6 : i + 8], 16),
-        ]
-        matrix.append(row)
+    for i in range(0, 8, 2):  # 8 characters represent 1 column
+        column = [int(hex_string[j : j + 2], 16) for j in range(i, len(hex_string), 8)]
+        matrix.append(column)
     return matrix
+
+
+def ascii_matrix_to_hex(matrix):
+    """
+    Convert a 4x4 matrix of ASCII integer values to a 4x4 matrix of hexadecimal strings.
+    """
+    hex_matrix = []
+    for row in matrix:
+        hex_row = ["{:02x}".format(byte) for byte in row]
+        hex_matrix.append(hex_row)
+    return hex_matrix
 
 
 def add_round_key(state, subkey):

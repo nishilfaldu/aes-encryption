@@ -1,5 +1,14 @@
 [
     {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
         "label": "read_plaintext",
         "importPath": "utils.read.readFile",
         "description": "utils.read.readFile",
@@ -64,6 +73,38 @@
         "documentation": {}
     },
     {
+        "label": "ascii_matrix_to_hex",
+        "importPath": "aes.helpers",
+        "description": "aes.helpers",
+        "isExtraImport": true,
+        "detail": "aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "sub_bytes",
+        "importPath": "aes.subBytes",
+        "description": "aes.subBytes",
+        "isExtraImport": true,
+        "detail": "aes.subBytes",
+        "documentation": {}
+    },
+    {
+        "label": "shift_rows",
+        "importPath": "aes.shiftRows",
+        "description": "aes.shiftRows",
+        "isExtraImport": true,
+        "detail": "aes.shiftRows",
+        "documentation": {}
+    },
+    {
+        "label": "mix_columns",
+        "importPath": "aes.mixColumns",
+        "description": "aes.mixColumns",
+        "isExtraImport": true,
+        "detail": "aes.mixColumns",
+        "documentation": {}
+    },
+    {
         "label": "creat_ascii_values_array",
         "kind": 2,
         "importPath": "src.aes.helpers",
@@ -95,7 +136,16 @@
         "kind": 2,
         "importPath": "src.aes.helpers",
         "description": "src.aes.helpers",
-        "peekOfCode": "def hex_to_ascii_matrix(hex_string):\n    \"\"\"\n    Convert a hexadecimal string to a 2D matrix of bytes.\n    \"\"\"\n    matrix = []\n    for i in range(0, len(hex_string), 8):  # 8 characters represent 1 row\n        row = [\n            int(hex_string[i : i + 2], 16),\n            int(hex_string[i + 2 : i + 4], 16),\n            int(hex_string[i + 4 : i + 6], 16),",
+        "peekOfCode": "def hex_to_ascii_matrix(hex_string):\n    \"\"\"\n    Convert a hexadecimal string to a transposed 2D matrix of bytes.\n    \"\"\"\n    matrix = []\n    for i in range(0, 8, 2):  # 8 characters represent 1 column\n        column = [int(hex_string[j : j + 2], 16) for j in range(i, len(hex_string), 8)]\n        matrix.append(column)\n    return matrix\ndef ascii_matrix_to_hex(matrix):",
+        "detail": "src.aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "ascii_matrix_to_hex",
+        "kind": 2,
+        "importPath": "src.aes.helpers",
+        "description": "src.aes.helpers",
+        "peekOfCode": "def ascii_matrix_to_hex(matrix):\n    \"\"\"\n    Convert a 4x4 matrix of ASCII integer values to a 4x4 matrix of hexadecimal strings.\n    \"\"\"\n    hex_matrix = []\n    for row in matrix:\n        hex_row = [\"{:02x}\".format(byte) for byte in row]\n        hex_matrix.append(hex_row)\n    return hex_matrix\ndef add_round_key(state, subkey):",
         "detail": "src.aes.helpers",
         "documentation": {}
     },
@@ -106,6 +156,60 @@
         "description": "src.aes.helpers",
         "peekOfCode": "def add_round_key(state, subkey):\n    \"\"\"\n    Perform AddRoundKey operation on the state using the subkey.\n    \"\"\"\n    for i in range(4):\n        for j in range(4):\n            state[i][j] ^= subkey[i][j]\n    return state",
         "detail": "src.aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "hex_to_matrix",
+        "kind": 2,
+        "importPath": "src.aes.mixColumns",
+        "description": "src.aes.mixColumns",
+        "peekOfCode": "def hex_to_matrix(hex_string):\n    \"\"\"\n    Convert a hexadecimal string to a 4x4 matrix of integers.\n    \"\"\"\n    matrix = []\n    for i in range(0, len(hex_string), 2):\n        row = [int(hex_string[i : i + 2], 16) for i in range(0, len(hex_string), 2)]\n        matrix.append(row)\n    return np.array(matrix)\ndef mix_columns(state):",
+        "detail": "src.aes.mixColumns",
+        "documentation": {}
+    },
+    {
+        "label": "mix_columns",
+        "kind": 2,
+        "importPath": "src.aes.mixColumns",
+        "description": "src.aes.mixColumns",
+        "peekOfCode": "def mix_columns(state):\n    \"\"\"\n    Mix columns of the state matrix using AES MixColumns operation.\n    \"\"\"\n    polynomial_matrix = np.array(\n        [[2, 3, 1, 1], [1, 2, 3, 1], [1, 1, 2, 3], [3, 1, 1, 2]], dtype=np.uint8\n    )\n    mixed_state = np.zeros_like(state)\n    for i in range(4):\n        for j in range(4):",
+        "detail": "src.aes.mixColumns",
+        "documentation": {}
+    },
+    {
+        "label": "gf_mul",
+        "kind": 2,
+        "importPath": "src.aes.mixColumns",
+        "description": "src.aes.mixColumns",
+        "peekOfCode": "def gf_mul(a, b):\n    \"\"\"\n    Galois Field (GF(2^8)) multiplication of two numbers.\n    \"\"\"\n    p = 0\n    for _ in range(8):\n        if b & 1:\n            p ^= a\n        hi_bit_set = a & 0x80\n        a <<= 1",
+        "detail": "src.aes.mixColumns",
+        "documentation": {}
+    },
+    {
+        "label": "shift_rows",
+        "kind": 2,
+        "importPath": "src.aes.shiftRows",
+        "description": "src.aes.shiftRows",
+        "peekOfCode": "def shift_rows(state):\n    \"\"\"\n    Shift rows of the state matrix.\n    \"\"\"\n    # Shift second row one position to the left\n    state[1] = state[1][1:] + state[1][:1]\n    # Shift third row two positions to the left\n    state[2] = state[2][2:] + state[2][:2]\n    # Shift fourth row three positions to the left\n    state[3] = state[3][3:] + state[3][:3]",
+        "detail": "src.aes.shiftRows",
+        "documentation": {}
+    },
+    {
+        "label": "sub_bytes",
+        "kind": 2,
+        "importPath": "src.aes.subBytes",
+        "description": "src.aes.subBytes",
+        "peekOfCode": "def sub_bytes(state_in_ascii_values):\n    \"\"\"\n    Substitute bytes from the state matrix using the S-box lookup table.\n    \"\"\"\n    for i in range(4):\n        for j in range(4):\n            state_in_ascii_values[i][j] = s_box[state_in_ascii_values[i][j]]\n    return state_in_ascii_values",
+        "detail": "src.aes.subBytes",
+        "documentation": {}
+    },
+    {
+        "label": "s_box",
+        "kind": 5,
+        "importPath": "src.aes.subBytes",
+        "description": "src.aes.subBytes",
+        "peekOfCode": "s_box = (\n    0x63,\n    0x7C,\n    0x77,\n    0x7B,\n    0xF2,\n    0x6B,\n    0x6F,\n    0xC5,\n    0x30,",
+        "detail": "src.aes.subBytes",
         "documentation": {}
     },
     {
@@ -203,7 +307,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "subkeys_file_path = \"data/subkey_example.txt\"\nprint(\"\\nsubkeys_file_path:\\n\", subkeys_file_path)\nsubkeys = read_subkeys(subkeys_file_path)\nprint(\"subkeys:\\n\", subkeys)\nsubkey_0_hex_string = subkeys[0]\nprint(\"subkey_0:\\n\", subkey_0_hex_string)\nsubkey_0_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_0_hex_string)\nprint(\"subkey_0_matrix:\\n\", subkey_0_matrix_in_ascii_values)\nstate_after_add_round_key = add_round_key(\n    initial_state_in_ascii_values, subkey_0_matrix_in_ascii_values",
+        "peekOfCode": "subkeys_file_path = \"data/subkey_example.txt\"\nprint(\"\\nsubkeys_file_path:\\n\", subkeys_file_path)\nsubkeys = read_subkeys(subkeys_file_path)\nprint(\"subkeys:\\n\", subkeys)\nsubkey_0_hex_string = subkeys[0]\nprint(\"subkey_0:\\n\", subkey_0_hex_string)\nsubkey_0_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_0_hex_string)\nprint(\"subkey_0_matrix:\\n\", subkey_0_matrix_in_ascii_values)\nsubkey_0_matrix_in_hex_values = ascii_matrix_to_hex(subkey_0_matrix_in_ascii_values)\nprint(\"subkey_0_matrix_in_hex_values:\\n\", subkey_0_matrix_in_hex_values)",
         "detail": "src.main",
         "documentation": {}
     },
@@ -212,7 +316,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "subkeys = read_subkeys(subkeys_file_path)\nprint(\"subkeys:\\n\", subkeys)\nsubkey_0_hex_string = subkeys[0]\nprint(\"subkey_0:\\n\", subkey_0_hex_string)\nsubkey_0_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_0_hex_string)\nprint(\"subkey_0_matrix:\\n\", subkey_0_matrix_in_ascii_values)\nstate_after_add_round_key = add_round_key(\n    initial_state_in_ascii_values, subkey_0_matrix_in_ascii_values\n)\nprint(\"state_after_add_round_key\\n\", state_after_add_round_key)",
+        "peekOfCode": "subkeys = read_subkeys(subkeys_file_path)\nprint(\"subkeys:\\n\", subkeys)\nsubkey_0_hex_string = subkeys[0]\nprint(\"subkey_0:\\n\", subkey_0_hex_string)\nsubkey_0_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_0_hex_string)\nprint(\"subkey_0_matrix:\\n\", subkey_0_matrix_in_ascii_values)\nsubkey_0_matrix_in_hex_values = ascii_matrix_to_hex(subkey_0_matrix_in_ascii_values)\nprint(\"subkey_0_matrix_in_hex_values:\\n\", subkey_0_matrix_in_hex_values)\nstate_in_ascii_after_add_round_key = add_round_key(\n    initial_state_in_ascii_values, subkey_0_matrix_in_ascii_values",
         "detail": "src.main",
         "documentation": {}
     },
@@ -221,7 +325,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "subkey_0_hex_string = subkeys[0]\nprint(\"subkey_0:\\n\", subkey_0_hex_string)\nsubkey_0_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_0_hex_string)\nprint(\"subkey_0_matrix:\\n\", subkey_0_matrix_in_ascii_values)\nstate_after_add_round_key = add_round_key(\n    initial_state_in_ascii_values, subkey_0_matrix_in_ascii_values\n)\nprint(\"state_after_add_round_key\\n\", state_after_add_round_key)\n# Part 3 - SubBytes",
+        "peekOfCode": "subkey_0_hex_string = subkeys[0]\nprint(\"subkey_0:\\n\", subkey_0_hex_string)\nsubkey_0_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_0_hex_string)\nprint(\"subkey_0_matrix:\\n\", subkey_0_matrix_in_ascii_values)\nsubkey_0_matrix_in_hex_values = ascii_matrix_to_hex(subkey_0_matrix_in_ascii_values)\nprint(\"subkey_0_matrix_in_hex_values:\\n\", subkey_0_matrix_in_hex_values)\nstate_in_ascii_after_add_round_key = add_round_key(\n    initial_state_in_ascii_values, subkey_0_matrix_in_ascii_values\n)\nprint(\"state_in_ascii_after_add_round_key\\n\", state_in_ascii_after_add_round_key)",
         "detail": "src.main",
         "documentation": {}
     },
@@ -230,16 +334,106 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "subkey_0_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_0_hex_string)\nprint(\"subkey_0_matrix:\\n\", subkey_0_matrix_in_ascii_values)\nstate_after_add_round_key = add_round_key(\n    initial_state_in_ascii_values, subkey_0_matrix_in_ascii_values\n)\nprint(\"state_after_add_round_key\\n\", state_after_add_round_key)\n# Part 3 - SubBytes",
+        "peekOfCode": "subkey_0_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_0_hex_string)\nprint(\"subkey_0_matrix:\\n\", subkey_0_matrix_in_ascii_values)\nsubkey_0_matrix_in_hex_values = ascii_matrix_to_hex(subkey_0_matrix_in_ascii_values)\nprint(\"subkey_0_matrix_in_hex_values:\\n\", subkey_0_matrix_in_hex_values)\nstate_in_ascii_after_add_round_key = add_round_key(\n    initial_state_in_ascii_values, subkey_0_matrix_in_ascii_values\n)\nprint(\"state_in_ascii_after_add_round_key\\n\", state_in_ascii_after_add_round_key)\nstate_in_hex_after_add_round_key = ascii_matrix_to_hex(\n    state_in_ascii_after_add_round_key",
         "detail": "src.main",
         "documentation": {}
     },
     {
-        "label": "state_after_add_round_key",
+        "label": "subkey_0_matrix_in_hex_values",
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "state_after_add_round_key = add_round_key(\n    initial_state_in_ascii_values, subkey_0_matrix_in_ascii_values\n)\nprint(\"state_after_add_round_key\\n\", state_after_add_round_key)\n# Part 3 - SubBytes",
+        "peekOfCode": "subkey_0_matrix_in_hex_values = ascii_matrix_to_hex(subkey_0_matrix_in_ascii_values)\nprint(\"subkey_0_matrix_in_hex_values:\\n\", subkey_0_matrix_in_hex_values)\nstate_in_ascii_after_add_round_key = add_round_key(\n    initial_state_in_ascii_values, subkey_0_matrix_in_ascii_values\n)\nprint(\"state_in_ascii_after_add_round_key\\n\", state_in_ascii_after_add_round_key)\nstate_in_hex_after_add_round_key = ascii_matrix_to_hex(\n    state_in_ascii_after_add_round_key\n)\nprint(\"state_in_hex_after_add_round_key:\\n\", state_in_hex_after_add_round_key)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "state_in_ascii_after_add_round_key",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "state_in_ascii_after_add_round_key = add_round_key(\n    initial_state_in_ascii_values, subkey_0_matrix_in_ascii_values\n)\nprint(\"state_in_ascii_after_add_round_key\\n\", state_in_ascii_after_add_round_key)\nstate_in_hex_after_add_round_key = ascii_matrix_to_hex(\n    state_in_ascii_after_add_round_key\n)\nprint(\"state_in_hex_after_add_round_key:\\n\", state_in_hex_after_add_round_key)\n# Part 3 - SubBytes\nstate_in_ascii_after_sub_bytes = sub_bytes(state_in_ascii_after_add_round_key)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "state_in_hex_after_add_round_key",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "state_in_hex_after_add_round_key = ascii_matrix_to_hex(\n    state_in_ascii_after_add_round_key\n)\nprint(\"state_in_hex_after_add_round_key:\\n\", state_in_hex_after_add_round_key)\n# Part 3 - SubBytes\nstate_in_ascii_after_sub_bytes = sub_bytes(state_in_ascii_after_add_round_key)\nprint(\"state_in_ascii_after_sub_bytes\\n\", state_in_ascii_after_sub_bytes)\nstate_in_hex_after_sub_bytes = ascii_matrix_to_hex(state_in_ascii_after_sub_bytes)\nprint(\"state_in_hex_after_sub_bytes:\\n\", state_in_hex_after_sub_bytes)\n# Part 4 - ShiftRows",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "state_in_ascii_after_sub_bytes",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "state_in_ascii_after_sub_bytes = sub_bytes(state_in_ascii_after_add_round_key)\nprint(\"state_in_ascii_after_sub_bytes\\n\", state_in_ascii_after_sub_bytes)\nstate_in_hex_after_sub_bytes = ascii_matrix_to_hex(state_in_ascii_after_sub_bytes)\nprint(\"state_in_hex_after_sub_bytes:\\n\", state_in_hex_after_sub_bytes)\n# Part 4 - ShiftRows\nstate_in_ascii_after_shift_rows = shift_rows(state_in_ascii_after_sub_bytes)\nprint(\"state_in_ascii_after_shift_rows\\n\", state_in_ascii_after_shift_rows)\nstate_in_hex_after_shift_rows = ascii_matrix_to_hex(state_in_ascii_after_shift_rows)\nprint(\"state_in_hex_after_shift_rows:\\n\", state_in_hex_after_shift_rows)\n# Part 5 - MixColumns",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "state_in_hex_after_sub_bytes",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "state_in_hex_after_sub_bytes = ascii_matrix_to_hex(state_in_ascii_after_sub_bytes)\nprint(\"state_in_hex_after_sub_bytes:\\n\", state_in_hex_after_sub_bytes)\n# Part 4 - ShiftRows\nstate_in_ascii_after_shift_rows = shift_rows(state_in_ascii_after_sub_bytes)\nprint(\"state_in_ascii_after_shift_rows\\n\", state_in_ascii_after_shift_rows)\nstate_in_hex_after_shift_rows = ascii_matrix_to_hex(state_in_ascii_after_shift_rows)\nprint(\"state_in_hex_after_shift_rows:\\n\", state_in_hex_after_shift_rows)\n# Part 5 - MixColumns\nstate_in_ascii_after_mix_columns = mix_columns(state_in_ascii_after_shift_rows)\nprint(\"state_in_ascii_after_mix_columns\\n\", state_in_ascii_after_mix_columns)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "state_in_ascii_after_shift_rows",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "state_in_ascii_after_shift_rows = shift_rows(state_in_ascii_after_sub_bytes)\nprint(\"state_in_ascii_after_shift_rows\\n\", state_in_ascii_after_shift_rows)\nstate_in_hex_after_shift_rows = ascii_matrix_to_hex(state_in_ascii_after_shift_rows)\nprint(\"state_in_hex_after_shift_rows:\\n\", state_in_hex_after_shift_rows)\n# Part 5 - MixColumns\nstate_in_ascii_after_mix_columns = mix_columns(state_in_ascii_after_shift_rows)\nprint(\"state_in_ascii_after_mix_columns\\n\", state_in_ascii_after_mix_columns)\nstate_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - Add all data printed using the statements above in a file",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "state_in_hex_after_shift_rows",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "state_in_hex_after_shift_rows = ascii_matrix_to_hex(state_in_ascii_after_shift_rows)\nprint(\"state_in_hex_after_shift_rows:\\n\", state_in_hex_after_shift_rows)\n# Part 5 - MixColumns\nstate_in_ascii_after_mix_columns = mix_columns(state_in_ascii_after_shift_rows)\nprint(\"state_in_ascii_after_mix_columns\\n\", state_in_ascii_after_mix_columns)\nstate_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - Add all data printed using the statements above in a file\noutput_file_path = \"data/output.txt\"\noutput_data = [",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "state_in_ascii_after_mix_columns",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "state_in_ascii_after_mix_columns = mix_columns(state_in_ascii_after_shift_rows)\nprint(\"state_in_ascii_after_mix_columns\\n\", state_in_ascii_after_mix_columns)\nstate_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - Add all data printed using the statements above in a file\noutput_file_path = \"data/output.txt\"\noutput_data = [\n    \"plaintext_file_path:\",\n    plaintext_file_path,\n    \"plaintext:\",",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "state_in_hex_after_mix_columns",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "state_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - Add all data printed using the statements above in a file\noutput_file_path = \"data/output.txt\"\noutput_data = [\n    \"plaintext_file_path:\",\n    plaintext_file_path,\n    \"plaintext:\",\n    plaintext,\n    \"ascii_values:\",",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "output_file_path",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "output_file_path = \"data/output.txt\"\noutput_data = [\n    \"plaintext_file_path:\",\n    plaintext_file_path,\n    \"plaintext:\",\n    plaintext,\n    \"ascii_values:\",\n    ascii_values,\n    \"hex_values:\",\n    hex_values,",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "output_data",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "output_data = [\n    \"plaintext_file_path:\",\n    plaintext_file_path,\n    \"plaintext:\",\n    plaintext,\n    \"ascii_values:\",\n    ascii_values,\n    \"hex_values:\",\n    hex_values,\n    \"initial_state_in_hex_values:\",",
         "detail": "src.main",
         "documentation": {}
     }

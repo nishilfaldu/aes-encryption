@@ -6,6 +6,11 @@ from aes.helpers import create_initial_state_with_ascii_values
 from utils.read.readFile import read_subkeys
 from aes.helpers import hex_to_ascii_matrix
 from aes.helpers import add_round_key
+from aes.subBytes import sub_bytes
+from aes.shiftRows import shift_rows
+from aes.helpers import ascii_matrix_to_hex
+from aes.mixColumns import mix_columns
+
 
 # Part 1
 plaintext_file_path = "data/plaintext.txt"
@@ -39,9 +44,79 @@ print("subkey_0:\n", subkey_0_hex_string)
 subkey_0_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_0_hex_string)
 print("subkey_0_matrix:\n", subkey_0_matrix_in_ascii_values)
 
-state_after_add_round_key = add_round_key(
+subkey_0_matrix_in_hex_values = ascii_matrix_to_hex(subkey_0_matrix_in_ascii_values)
+print("subkey_0_matrix_in_hex_values:\n", subkey_0_matrix_in_hex_values)
+
+state_in_ascii_after_add_round_key = add_round_key(
     initial_state_in_ascii_values, subkey_0_matrix_in_ascii_values
 )
-print("state_after_add_round_key\n", state_after_add_round_key)
+print("state_in_ascii_after_add_round_key\n", state_in_ascii_after_add_round_key)
+
+state_in_hex_after_add_round_key = ascii_matrix_to_hex(
+    state_in_ascii_after_add_round_key
+)
+print("state_in_hex_after_add_round_key:\n", state_in_hex_after_add_round_key)
 
 # Part 3 - SubBytes
+state_in_ascii_after_sub_bytes = sub_bytes(state_in_ascii_after_add_round_key)
+print("state_in_ascii_after_sub_bytes\n", state_in_ascii_after_sub_bytes)
+
+state_in_hex_after_sub_bytes = ascii_matrix_to_hex(state_in_ascii_after_sub_bytes)
+print("state_in_hex_after_sub_bytes:\n", state_in_hex_after_sub_bytes)
+
+# Part 4 - ShiftRows
+state_in_ascii_after_shift_rows = shift_rows(state_in_ascii_after_sub_bytes)
+print("state_in_ascii_after_shift_rows\n", state_in_ascii_after_shift_rows)
+
+state_in_hex_after_shift_rows = ascii_matrix_to_hex(state_in_ascii_after_shift_rows)
+print("state_in_hex_after_shift_rows:\n", state_in_hex_after_shift_rows)
+
+# Part 5 - MixColumns
+state_in_ascii_after_mix_columns = mix_columns(state_in_ascii_after_shift_rows)
+print("state_in_ascii_after_mix_columns\n", state_in_ascii_after_mix_columns)
+
+state_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)
+print("state_in_hex_after_mix_columns:\n", state_in_hex_after_mix_columns)
+
+# Part 6 - Add all data printed using the statements above in a file
+output_file_path = "data/output.txt"
+output_data = [
+    "plaintext_file_path:",
+    plaintext_file_path,
+    "plaintext:",
+    plaintext,
+    "ascii_values:",
+    ascii_values,
+    "hex_values:",
+    hex_values,
+    "initial_state_in_hex_values:",
+    initial_state_in_hex_values,
+    "initial_state_in_ascii_values:",
+    initial_state_in_ascii_values,
+    "subkeys_file_path:",
+    subkeys_file_path,
+    "subkeys:",
+    subkeys,
+    "subkey_0:",
+    subkey_0_hex_string,
+    "subkey_0_matrix_in_ascii_values:",
+    subkey_0_matrix_in_ascii_values,
+    "subkey_0_matrix_in_hex_values:",
+    subkey_0_matrix_in_hex_values,
+    "state_in_ascii_after_add_round_key:",
+    state_in_ascii_after_add_round_key,
+    "state_in_hex_after_add_round_key:",
+    state_in_hex_after_add_round_key,
+    "state_in_ascii_after_sub_bytes:",
+    state_in_ascii_after_sub_bytes,
+    "state_in_hex_after_sub_bytes:",
+    state_in_hex_after_sub_bytes,
+    "state_in_ascii_after_shift_rows:",
+    state_in_ascii_after_shift_rows,
+    "state_in_hex_after_shift_rows:",
+    state_in_hex_after_shift_rows,
+    "state_in_ascii_after_mix_columns:",
+    state_in_ascii_after_mix_columns,
+    "state_in_hex_after_mix_columns:",
+    state_in_hex_after_mix_columns,
+]

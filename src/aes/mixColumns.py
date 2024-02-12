@@ -1,30 +1,6 @@
 import numpy as np
 
 
-# def mix_columns(state):
-#     """
-#     Mix columns of the state matrix using matrix multiplication.
-#     """
-#     # Define the fixed polynomial matrix for MixColumns
-#     polynomial_matrix = np.array(
-#         [[2, 3, 1, 1], [1, 2, 3, 1], [1, 1, 2, 3], [3, 1, 1, 2]], dtype=np.uint8
-#     )
-
-#     # Convert the state matrix to a numpy array for matrix multiplication
-#     state_matrix = np.array(state, dtype=np.uint8)
-
-#     # Perform matrix multiplication
-#     mixed_matrix = np.dot(polynomial_matrix, state_matrix)
-
-#     # Modulo operation with a fixed polynomial (0x1B) in the Galois field
-#     mixed_matrix = mixed_matrix % 0x11B
-
-#     # Convert the result back to a regular Python list
-#     mixed_state = mixed_matrix.tolist()
-
-#     return mixed_state
-
-
 def hex_to_matrix(hex_string):
     """
     Convert a hexadecimal string to a 4x4 matrix of integers.

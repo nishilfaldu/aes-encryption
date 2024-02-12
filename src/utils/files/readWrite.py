@@ -4,7 +4,9 @@ def read_plaintext(file_path):
     """
     with open(file_path, "r") as file:
         plaintext = file.read()
-    return plaintext
+
+    padded_plain_text = pad_plaintext(plaintext)
+    return padded_plain_text
 
 
 def read_subkeys(file_path):
@@ -40,3 +42,19 @@ def write_to_file(file_path, data):
                 file.write(str(item) + "\n")  # Write other data types to file
 
     print(f"\n\n\nData written to {file_path}\n\n\n")
+
+
+def pad_plaintext(plaintext):
+    """
+    Pad the plaintext to make its length a multiple of the block size.
+    """
+    block_size = 16  # AES block size is 128 bits (16 bytes)
+    padding_length = block_size - (len(plaintext) % block_size)
+
+    # If the plaintext length is already a multiple of the block size, no padding is needed
+    if padding_length == 16:
+        return plaintext
+
+    # Convert padding bytes to characters for better readability
+    padding = chr(padding_length) * padding_length
+    return plaintext + padding

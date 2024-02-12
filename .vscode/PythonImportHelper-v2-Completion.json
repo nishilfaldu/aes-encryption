@@ -9,27 +9,11 @@
         "documentation": {}
     },
     {
-        "label": "read_plaintext",
-        "importPath": "utils.files.readWrite",
-        "description": "utils.files.readWrite",
+        "label": "convert_to_ascii",
+        "importPath": "utils.helpers.convert",
+        "description": "utils.helpers.convert",
         "isExtraImport": true,
-        "detail": "utils.files.readWrite",
-        "documentation": {}
-    },
-    {
-        "label": "read_subkeys",
-        "importPath": "utils.files.readWrite",
-        "description": "utils.files.readWrite",
-        "isExtraImport": true,
-        "detail": "utils.files.readWrite",
-        "documentation": {}
-    },
-    {
-        "label": "write_to_file",
-        "importPath": "utils.files.readWrite",
-        "description": "utils.files.readWrite",
-        "isExtraImport": true,
-        "detail": "utils.files.readWrite",
+        "detail": "utils.helpers.convert",
         "documentation": {}
     },
     {
@@ -46,6 +30,70 @@
         "description": "utils.helpers.convert",
         "isExtraImport": true,
         "detail": "utils.helpers.convert",
+        "documentation": {}
+    },
+    {
+        "label": "create_initial_state_with_ascii_values",
+        "importPath": "aes.helpers",
+        "description": "aes.helpers",
+        "isExtraImport": true,
+        "detail": "aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "hex_to_ascii_matrix",
+        "importPath": "aes.helpers",
+        "description": "aes.helpers",
+        "isExtraImport": true,
+        "detail": "aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "add_round_key",
+        "importPath": "aes.helpers",
+        "description": "aes.helpers",
+        "isExtraImport": true,
+        "detail": "aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "ascii_matrix_to_hex",
+        "importPath": "aes.helpers",
+        "description": "aes.helpers",
+        "isExtraImport": true,
+        "detail": "aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "hex_to_ascii_matrix",
+        "importPath": "aes.helpers",
+        "description": "aes.helpers",
+        "isExtraImport": true,
+        "detail": "aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "ascii_matrix_to_hex",
+        "importPath": "aes.helpers",
+        "description": "aes.helpers",
+        "isExtraImport": true,
+        "detail": "aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "transpose",
+        "importPath": "aes.helpers",
+        "description": "aes.helpers",
+        "isExtraImport": true,
+        "detail": "aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "ascii_matrix_to_hex_for_list",
+        "importPath": "aes.helpers",
+        "description": "aes.helpers",
+        "isExtraImport": true,
+        "detail": "aes.helpers",
         "documentation": {}
     },
     {
@@ -89,6 +137,54 @@
         "documentation": {}
     },
     {
+        "label": "read_subkeys",
+        "importPath": "utils.files.readWrite",
+        "description": "utils.files.readWrite",
+        "isExtraImport": true,
+        "detail": "utils.files.readWrite",
+        "documentation": {}
+    },
+    {
+        "label": "pad_plaintext",
+        "importPath": "utils.files.readWrite",
+        "description": "utils.files.readWrite",
+        "isExtraImport": true,
+        "detail": "utils.files.readWrite",
+        "documentation": {}
+    },
+    {
+        "label": "read_plaintext",
+        "importPath": "utils.files.readWrite",
+        "description": "utils.files.readWrite",
+        "isExtraImport": true,
+        "detail": "utils.files.readWrite",
+        "documentation": {}
+    },
+    {
+        "label": "read_subkeys",
+        "importPath": "utils.files.readWrite",
+        "description": "utils.files.readWrite",
+        "isExtraImport": true,
+        "detail": "utils.files.readWrite",
+        "documentation": {}
+    },
+    {
+        "label": "write_to_file",
+        "importPath": "utils.files.readWrite",
+        "description": "utils.files.readWrite",
+        "isExtraImport": true,
+        "detail": "utils.files.readWrite",
+        "documentation": {}
+    },
+    {
+        "label": "sub_bytes",
+        "importPath": "aes.subBytes",
+        "description": "aes.subBytes",
+        "isExtraImport": true,
+        "detail": "aes.subBytes",
+        "documentation": {}
+    },
+    {
         "label": "sub_bytes",
         "importPath": "aes.subBytes",
         "description": "aes.subBytes",
@@ -105,11 +201,36 @@
         "documentation": {}
     },
     {
+        "label": "shift_rows",
+        "importPath": "aes.shiftRows",
+        "description": "aes.shiftRows",
+        "isExtraImport": true,
+        "detail": "aes.shiftRows",
+        "documentation": {}
+    },
+    {
         "label": "mix_columns",
         "importPath": "aes.mixColumns",
         "description": "aes.mixColumns",
         "isExtraImport": true,
         "detail": "aes.mixColumns",
+        "documentation": {}
+    },
+    {
+        "label": "mix_columns",
+        "importPath": "aes.mixColumns",
+        "description": "aes.mixColumns",
+        "isExtraImport": true,
+        "detail": "aes.mixColumns",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
         "documentation": {}
     },
     {
@@ -144,7 +265,16 @@
         "kind": 2,
         "importPath": "src.aes.helpers",
         "description": "src.aes.helpers",
-        "peekOfCode": "def hex_to_ascii_matrix(hex_string):\n    \"\"\"\n    Convert a hexadecimal string to a transposed 2D matrix of bytes.\n    \"\"\"\n    matrix = []\n    for i in range(0, 8, 2):  # 8 characters represent 1 column\n        column = [int(hex_string[j : j + 2], 16) for j in range(i, len(hex_string), 8)]\n        matrix.append(column)\n    return matrix\ndef ascii_matrix_to_hex(matrix):",
+        "peekOfCode": "def hex_to_ascii_matrix(hex_string):\n    \"\"\"\n    Convert a hexadecimal string to a transposed 2D matrix of bytes.\n    \"\"\"\n    matrix = []\n    for i in range(0, 8, 2):  # 8 characters represent 1 column\n        column = [int(hex_string[j : j + 2], 16) for j in range(i, len(hex_string), 8)]\n        matrix.append(column)\n    return matrix\ndef transpose(matrix):",
+        "detail": "src.aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "transpose",
+        "kind": 2,
+        "importPath": "src.aes.helpers",
+        "description": "src.aes.helpers",
+        "peekOfCode": "def transpose(matrix):\n    \"\"\"\n    Transpose a 2D matrix.\n    \"\"\"\n    # Get the number of rows and columns in the original matrix\n    num_rows = len(matrix)\n    num_cols = len(matrix[0])\n    # Create a new matrix to store the transposed values\n    transposed_matrix = [[0] * num_rows for _ in range(num_cols)]\n    # Iterate through the original matrix and fill the transposed matrix",
         "detail": "src.aes.helpers",
         "documentation": {}
     },
@@ -153,7 +283,16 @@
         "kind": 2,
         "importPath": "src.aes.helpers",
         "description": "src.aes.helpers",
-        "peekOfCode": "def ascii_matrix_to_hex(matrix):\n    \"\"\"\n    Convert a 4x4 matrix of ASCII integer values to a 4x4 matrix of hexadecimal strings.\n    \"\"\"\n    hex_matrix = []\n    for row in matrix:\n        hex_row = [\"{:02x}\".format(byte) for byte in row]\n        hex_matrix.append(hex_row)\n    return hex_matrix\ndef add_round_key(state, subkey):",
+        "peekOfCode": "def ascii_matrix_to_hex(matrix):\n    \"\"\"\n    Convert a 4x4 matrix of ASCII integer values to a 4x4 matrix of hexadecimal strings.\n    \"\"\"\n    hex_matrix = []\n    for row in matrix:\n        hex_row = [\"{:02x}\".format(byte) for byte in row]\n        hex_matrix.append(hex_row)\n    return hex_matrix\ndef ascii_matrix_to_hex_for_list(ascii_list):",
+        "detail": "src.aes.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "ascii_matrix_to_hex_for_list",
+        "kind": 2,
+        "importPath": "src.aes.helpers",
+        "description": "src.aes.helpers",
+        "peekOfCode": "def ascii_matrix_to_hex_for_list(ascii_list):\n    \"\"\"\n    Convert a list of ASCII integer values to a 4x4 matrix of hexadecimal strings.\n    \"\"\"\n    hex_list = [\"{:02x}\".format(byte) for byte in ascii_list]\n    return hex_list\ndef add_round_key(state, subkey):\n    \"\"\"\n    Perform AddRoundKey operation on the state using the subkey.\n    \"\"\"",
         "detail": "src.aes.helpers",
         "documentation": {}
     },
@@ -225,7 +364,7 @@
         "kind": 2,
         "importPath": "src.utils.files.readWrite",
         "description": "src.utils.files.readWrite",
-        "peekOfCode": "def read_plaintext(file_path):\n    \"\"\"\n    Read plaintext from a file and return it as a string.\n    \"\"\"\n    with open(file_path, \"r\") as file:\n        plaintext = file.read()\n    return plaintext\ndef read_subkeys(file_path):\n    \"\"\"\n    Read subkeys from a file and return them as a list.",
+        "peekOfCode": "def read_plaintext(file_path):\n    \"\"\"\n    Read plaintext from a file and return it as a string.\n    \"\"\"\n    with open(file_path, \"r\") as file:\n        plaintext = file.read()\n    padded_plain_text = pad_plaintext(plaintext)\n    return padded_plain_text\ndef read_subkeys(file_path):\n    \"\"\"",
         "detail": "src.utils.files.readWrite",
         "documentation": {}
     },
@@ -248,6 +387,15 @@
         "documentation": {}
     },
     {
+        "label": "pad_plaintext",
+        "kind": 2,
+        "importPath": "src.utils.files.readWrite",
+        "description": "src.utils.files.readWrite",
+        "peekOfCode": "def pad_plaintext(plaintext):\n    \"\"\"\n    Pad the plaintext to make its length a multiple of the block size.\n    \"\"\"\n    block_size = 16  # AES block size is 128 bits (16 bytes)\n    padding_length = block_size - (len(plaintext) % block_size)\n    # If the plaintext length is already a multiple of the block size, no padding is needed\n    if padding_length == 16:\n        return plaintext\n    # Convert padding bytes to characters for better readability",
+        "detail": "src.utils.files.readWrite",
+        "documentation": {}
+    },
+    {
         "label": "convert_to_ascii",
         "kind": 2,
         "importPath": "src.utils.helpers.convert",
@@ -263,6 +411,123 @@
         "description": "src.utils.helpers.convert",
         "peekOfCode": "def ascii_to_hex(ascii_values):\n    \"\"\"\n    Convert an array of ASCII values to hexadecimal representation.\n    \"\"\"\n    hex_array = [hex(value)[2:].zfill(2) for value in ascii_values]\n    return hex_array",
         "detail": "src.utils.helpers.convert",
+        "documentation": {}
+    },
+    {
+        "label": "aes_encrypt_block",
+        "kind": 2,
+        "importPath": "src.aes_encrypt",
+        "description": "src.aes_encrypt",
+        "peekOfCode": "def aes_encrypt_block(plaintext_block):\n    \"\"\"\n    Encrypt a single block of plaintext message using AES encryption algorithm.\n    \"\"\"\n    # Convert block to ASCII values\n    block_ascii_values = convert_to_ascii(plaintext_block)\n    # Create initial state with ASCII values\n    initial_state = create_initial_state_with_ascii_values(block_ascii_values)\n    # Add round key\n    subkeys_file_path = \"data/subkey_example.txt\"",
+        "detail": "src.aes_encrypt",
+        "documentation": {}
+    },
+    {
+        "label": "aes_encrypt",
+        "kind": 2,
+        "importPath": "src.aes_encrypt",
+        "description": "src.aes_encrypt",
+        "peekOfCode": "def aes_encrypt(plaintext):\n    \"\"\"\n    Encrypt a plaintext message using AES encryption algorithm.\n    \"\"\"\n    # Pad the plaintext if its length is not a multiple of the block size\n    padded_plaintext = pad_plaintext(plaintext)\n    # Split the padded plaintext into blocks of size 16 bytes (128 bits)\n    blocks = [padded_plaintext[i : i + 16] for i in range(0, len(padded_plaintext), 16)]\n    # Encrypt each block using AES encryption algorithm\n    ciphertext_blocks = []",
+        "detail": "src.aes_encrypt",
+        "documentation": {}
+    },
+    {
+        "label": "flatten_extend",
+        "kind": 2,
+        "importPath": "src.aes_encrypt",
+        "description": "src.aes_encrypt",
+        "peekOfCode": "def flatten_extend(matrix):\n    flat_list = []\n    for row in matrix:\n        flat_list.extend(row)\n    return flat_list\ndef main():\n    # Create argument parser\n    parser = argparse.ArgumentParser(description=\"AES Encryption Utility\")\n    # Add argument for plaintext input\n    parser.add_argument(\"plaintext\", type=str, help=\"Input plaintext message\")",
+        "detail": "src.aes_encrypt",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.aes_encrypt",
+        "description": "src.aes_encrypt",
+        "peekOfCode": "def main():\n    # Create argument parser\n    parser = argparse.ArgumentParser(description=\"AES Encryption Utility\")\n    # Add argument for plaintext input\n    parser.add_argument(\"plaintext\", type=str, help=\"Input plaintext message\")\n    #  Parse command-line arguments\n    args = parser.parse_args()\n    # Perform AES encryption\n    ciphertext = aes_encrypt(args.plaintext)\n    # Print the ciphertext",
+        "detail": "src.aes_encrypt",
+        "documentation": {}
+    },
+    {
+        "label": "rotate_word",
+        "kind": 2,
+        "importPath": "src.aes_key_schedule",
+        "description": "src.aes_key_schedule",
+        "peekOfCode": "def rotate_word(word):\n    \"\"\"\n    Rotate a word left by one byte.\n    \"\"\"\n    return word[1:] + word[:1]\ndef substitute_word(word):\n    \"\"\"\n    Substitute each byte in a word using the S-box.\n    \"\"\"\n    s_box = (",
+        "detail": "src.aes_key_schedule",
+        "documentation": {}
+    },
+    {
+        "label": "substitute_word",
+        "kind": 2,
+        "importPath": "src.aes_key_schedule",
+        "description": "src.aes_key_schedule",
+        "peekOfCode": "def substitute_word(word):\n    \"\"\"\n    Substitute each byte in a word using the S-box.\n    \"\"\"\n    s_box = (\n        0x63,\n        0x7C,\n        0x77,\n        0x7B,\n        0xF2,",
+        "detail": "src.aes_key_schedule",
+        "documentation": {}
+    },
+    {
+        "label": "generate_next_subkey",
+        "kind": 2,
+        "importPath": "src.aes_key_schedule",
+        "description": "src.aes_key_schedule",
+        "peekOfCode": "def generate_next_subkey(subkey):\n    \"\"\"\n    Generate the next subkey using the current subkey and round constant.\n    \"\"\"\n    # Split the subkey into 4 bytes\n    subkey_0_matrix_in_ascii_values = transpose(hex_to_ascii_matrix(subkey))\n    # subkey_0_matrix_in_hex_values = transpose(\n    #     ascii_matrix_to_hex(subkey_0_matrix_in_ascii_values)\n    # )\n    # Rotate the last column of the subkey",
+        "detail": "src.aes_key_schedule",
+        "documentation": {}
+    },
+    {
+        "label": "key_expansion",
+        "kind": 2,
+        "importPath": "src.aes_key_schedule",
+        "description": "src.aes_key_schedule",
+        "peekOfCode": "def key_expansion(key):\n    \"\"\"\n    Perform key expansion to generate round keys from the initial key.\n    \"\"\"\n    # Initialize variables\n    round_constants = [0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1B, 0x36]\n    num_rounds = 10\n    subkeys = [key]\n    # Generate additional subkeys\n    for i in range(1, num_rounds + 1):",
+        "detail": "src.aes_key_schedule",
+        "documentation": {}
+    },
+    {
+        "label": "read_subkey",
+        "kind": 2,
+        "importPath": "src.aes_key_schedule",
+        "description": "src.aes_key_schedule",
+        "peekOfCode": "def read_subkey(file_path):\n    \"\"\"\n    Read the first subkey from the file.\n    \"\"\"\n    with open(file_path, \"r\") as file:\n        subkey = (\n            file.readline().strip()\n        )  # Assuming subkey is stored as a single line in the file\n    return subkey\ndef write_subkey_to_file(subkey, file_path):",
+        "detail": "src.aes_key_schedule",
+        "documentation": {}
+    },
+    {
+        "label": "write_subkey_to_file",
+        "kind": 2,
+        "importPath": "src.aes_key_schedule",
+        "description": "src.aes_key_schedule",
+        "peekOfCode": "def write_subkey_to_file(subkey, file_path):\n    \"\"\"\n    Write the subkey to a file in hexadecimal format.\n    \"\"\"\n    with open(file_path, \"w\") as file:\n        file.write(subkey)\ndef xor_after_subbytes(result_from_subbytes, round_constant=[\"01\", \"00\", \"00\", \"00\"]):\n    \"\"\"\n    Perform XOR operation after SubBytes.\n    \"\"\"",
+        "detail": "src.aes_key_schedule",
+        "documentation": {}
+    },
+    {
+        "label": "xor_after_subbytes",
+        "kind": 2,
+        "importPath": "src.aes_key_schedule",
+        "description": "src.aes_key_schedule",
+        "peekOfCode": "def xor_after_subbytes(result_from_subbytes, round_constant=[\"01\", \"00\", \"00\", \"00\"]):\n    \"\"\"\n    Perform XOR operation after SubBytes.\n    \"\"\"\n    new_result = []\n    for i in range(4):\n        new_result.append(\n            int(hex(result_from_subbytes[i]), base=16) ^ int(round_constant[i], base=16)\n        )\n    return new_result",
+        "detail": "src.aes_key_schedule",
+        "documentation": {}
+    },
+    {
+        "label": "xor_general",
+        "kind": 2,
+        "importPath": "src.aes_key_schedule",
+        "description": "src.aes_key_schedule",
+        "peekOfCode": "def xor_general(list_one, list_two):\n    \"\"\"\n    Perform general XOR between 2 lists.\n    \"\"\"\n    new_result = []\n    for i in range(4):\n        new_result.append(\n            int(hex(list_one[i]), base=16) ^ int(hex(list_two[i]), base=16)\n        )\n    return new_result",
+        "detail": "src.aes_key_schedule",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.aes_key_schedule",
+        "description": "src.aes_key_schedule",
+        "peekOfCode": "def main():\n    # Read the first subkey from file\n    subkey_file_path = \"data/subkey_example.txt\"\n    subkey = read_subkey(subkey_file_path)\n    # Generate next subkey\n    next_subkey = generate_next_subkey(subkey)\n    # ascii version of next key\n    next_subkey_hex_version = ascii_matrix_to_hex(next_subkey)\n    # Print the next subkey in hexadecimal\n    output_string = \" \".join([\"\".join(row) for row in next_subkey_hex_version])",
+        "detail": "src.aes_key_schedule",
         "documentation": {}
     },
     {
@@ -405,7 +670,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "state_in_ascii_after_shift_rows = shift_rows(state_in_ascii_after_sub_bytes)\nprint(\"state_in_ascii_after_shift_rows\\n\", state_in_ascii_after_shift_rows)\nstate_in_hex_after_shift_rows = ascii_matrix_to_hex(state_in_ascii_after_shift_rows)\nprint(\"state_in_hex_after_shift_rows:\\n\", state_in_hex_after_shift_rows)\n# Part 5 - MixColumns\nstate_in_ascii_after_mix_columns = mix_columns(state_in_ascii_after_shift_rows)\nprint(\"state_in_ascii_after_mix_columns\\n\", state_in_ascii_after_mix_columns)\nstate_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - Add all data printed using the statements above in a file",
+        "peekOfCode": "state_in_ascii_after_shift_rows = shift_rows(state_in_ascii_after_sub_bytes)\nprint(\"state_in_ascii_after_shift_rows\\n\", state_in_ascii_after_shift_rows)\nstate_in_hex_after_shift_rows = ascii_matrix_to_hex(state_in_ascii_after_shift_rows)\nprint(\"state_in_hex_after_shift_rows:\\n\", state_in_hex_after_shift_rows)\n# Part 5 - MixColumns\nstate_in_ascii_after_mix_columns = mix_columns(state_in_ascii_after_shift_rows)\nprint(\"state_in_ascii_after_mix_columns\\n\", state_in_ascii_after_mix_columns)\nstate_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - another add_round_key",
         "detail": "src.main",
         "documentation": {}
     },
@@ -414,7 +679,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "state_in_hex_after_shift_rows = ascii_matrix_to_hex(state_in_ascii_after_shift_rows)\nprint(\"state_in_hex_after_shift_rows:\\n\", state_in_hex_after_shift_rows)\n# Part 5 - MixColumns\nstate_in_ascii_after_mix_columns = mix_columns(state_in_ascii_after_shift_rows)\nprint(\"state_in_ascii_after_mix_columns\\n\", state_in_ascii_after_mix_columns)\nstate_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - Add all data printed using the statements above in a file\noutput_file_path = \"data/output.txt\"\noutput_data = [",
+        "peekOfCode": "state_in_hex_after_shift_rows = ascii_matrix_to_hex(state_in_ascii_after_shift_rows)\nprint(\"state_in_hex_after_shift_rows:\\n\", state_in_hex_after_shift_rows)\n# Part 5 - MixColumns\nstate_in_ascii_after_mix_columns = mix_columns(state_in_ascii_after_shift_rows)\nprint(\"state_in_ascii_after_mix_columns\\n\", state_in_ascii_after_mix_columns)\nstate_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - another add_round_key\nsubkey_1_hex_string = subkeys[1]\nprint(\"subkey_1:\\n\", subkey_1_hex_string)",
         "detail": "src.main",
         "documentation": {}
     },
@@ -423,7 +688,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "state_in_ascii_after_mix_columns = mix_columns(state_in_ascii_after_shift_rows)\nprint(\"state_in_ascii_after_mix_columns\\n\", state_in_ascii_after_mix_columns)\nstate_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - Add all data printed using the statements above in a file\noutput_file_path = \"data/output.txt\"\noutput_data = [\n    \"plaintext_file_path:\",\n    plaintext_file_path,\n    \"plaintext:\",",
+        "peekOfCode": "state_in_ascii_after_mix_columns = mix_columns(state_in_ascii_after_shift_rows)\nprint(\"state_in_ascii_after_mix_columns\\n\", state_in_ascii_after_mix_columns)\nstate_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - another add_round_key\nsubkey_1_hex_string = subkeys[1]\nprint(\"subkey_1:\\n\", subkey_1_hex_string)\nsubkey_1_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_1_hex_string)\nprint(\"subkey_1_matrix:\\n\", subkey_1_matrix_in_ascii_values)\nsubkey_1_matrix_in_hex_values = ascii_matrix_to_hex(subkey_1_matrix_in_ascii_values)",
         "detail": "src.main",
         "documentation": {}
     },
@@ -432,7 +697,52 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "state_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - Add all data printed using the statements above in a file\noutput_file_path = \"data/output.txt\"\noutput_data = [\n    \"plaintext_file_path:\",\n    plaintext_file_path,\n    \"plaintext:\",\n    plaintext,\n    \"ascii_values:\",",
+        "peekOfCode": "state_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)\nprint(\"state_in_hex_after_mix_columns:\\n\", state_in_hex_after_mix_columns)\n# Part 6 - another add_round_key\nsubkey_1_hex_string = subkeys[1]\nprint(\"subkey_1:\\n\", subkey_1_hex_string)\nsubkey_1_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_1_hex_string)\nprint(\"subkey_1_matrix:\\n\", subkey_1_matrix_in_ascii_values)\nsubkey_1_matrix_in_hex_values = ascii_matrix_to_hex(subkey_1_matrix_in_ascii_values)\nprint(\"subkey_0_matrix_in_hex_values:\\n\", subkey_1_matrix_in_hex_values)\nstate_in_ascii_after_add_round_key_2 = add_round_key(",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "subkey_1_hex_string",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "subkey_1_hex_string = subkeys[1]\nprint(\"subkey_1:\\n\", subkey_1_hex_string)\nsubkey_1_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_1_hex_string)\nprint(\"subkey_1_matrix:\\n\", subkey_1_matrix_in_ascii_values)\nsubkey_1_matrix_in_hex_values = ascii_matrix_to_hex(subkey_1_matrix_in_ascii_values)\nprint(\"subkey_0_matrix_in_hex_values:\\n\", subkey_1_matrix_in_hex_values)\nstate_in_ascii_after_add_round_key_2 = add_round_key(\n    state_in_ascii_after_mix_columns, subkey_1_matrix_in_ascii_values\n)\nprint(",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "subkey_1_matrix_in_ascii_values",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "subkey_1_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_1_hex_string)\nprint(\"subkey_1_matrix:\\n\", subkey_1_matrix_in_ascii_values)\nsubkey_1_matrix_in_hex_values = ascii_matrix_to_hex(subkey_1_matrix_in_ascii_values)\nprint(\"subkey_0_matrix_in_hex_values:\\n\", subkey_1_matrix_in_hex_values)\nstate_in_ascii_after_add_round_key_2 = add_round_key(\n    state_in_ascii_after_mix_columns, subkey_1_matrix_in_ascii_values\n)\nprint(\n    \"state_in_ascii_after_add_round_key_2:\\n\",\n    state_in_ascii_after_add_round_key_2,",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "subkey_1_matrix_in_hex_values",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "subkey_1_matrix_in_hex_values = ascii_matrix_to_hex(subkey_1_matrix_in_ascii_values)\nprint(\"subkey_0_matrix_in_hex_values:\\n\", subkey_1_matrix_in_hex_values)\nstate_in_ascii_after_add_round_key_2 = add_round_key(\n    state_in_ascii_after_mix_columns, subkey_1_matrix_in_ascii_values\n)\nprint(\n    \"state_in_ascii_after_add_round_key_2:\\n\",\n    state_in_ascii_after_add_round_key_2,\n)\nstate_in_hex_after_add_round_key_2 = ascii_matrix_to_hex(",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "state_in_ascii_after_add_round_key_2",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "state_in_ascii_after_add_round_key_2 = add_round_key(\n    state_in_ascii_after_mix_columns, subkey_1_matrix_in_ascii_values\n)\nprint(\n    \"state_in_ascii_after_add_round_key_2:\\n\",\n    state_in_ascii_after_add_round_key_2,\n)\nstate_in_hex_after_add_round_key_2 = ascii_matrix_to_hex(\n    state_in_ascii_after_add_round_key_2\n)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "state_in_hex_after_add_round_key_2",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "state_in_hex_after_add_round_key_2 = ascii_matrix_to_hex(\n    state_in_ascii_after_add_round_key_2\n)\nprint(\"state_in_hex_after_add_round_key_2:\\n\", state_in_hex_after_add_round_key_2)\n# Part 7 - Add all data printed using the statements above in a file\noutput_file_path = \"data/result.txt\"\noutput_data = [\n    \"plaintext_file_path:\",\n    plaintext_file_path,\n    \"plaintext:\",",
         "detail": "src.main",
         "documentation": {}
     },
@@ -441,7 +751,7 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "output_file_path = \"data/output.txt\"\noutput_data = [\n    \"plaintext_file_path:\",\n    plaintext_file_path,\n    \"plaintext:\",\n    plaintext,\n    \"ascii_values:\",\n    ascii_values,\n    \"hex_values:\",\n    hex_values,",
+        "peekOfCode": "output_file_path = \"data/result.txt\"\noutput_data = [\n    \"plaintext_file_path:\",\n    plaintext_file_path,\n    \"plaintext:\",\n    plaintext,\n    \"ascii_values:\",\n    ascii_values,\n    \"hex_values:\",\n    hex_values,",
         "detail": "src.main",
         "documentation": {}
     },

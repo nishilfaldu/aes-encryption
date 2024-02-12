@@ -40,6 +40,25 @@ def hex_to_ascii_matrix(hex_string):
     return matrix
 
 
+def transpose(matrix):
+    """
+    Transpose a 2D matrix.
+    """
+    # Get the number of rows and columns in the original matrix
+    num_rows = len(matrix)
+    num_cols = len(matrix[0])
+
+    # Create a new matrix to store the transposed values
+    transposed_matrix = [[0] * num_rows for _ in range(num_cols)]
+
+    # Iterate through the original matrix and fill the transposed matrix
+    for i in range(num_rows):
+        for j in range(num_cols):
+            transposed_matrix[j][i] = matrix[i][j]
+
+    return transposed_matrix
+
+
 def ascii_matrix_to_hex(matrix):
     """
     Convert a 4x4 matrix of ASCII integer values to a 4x4 matrix of hexadecimal strings.
@@ -49,6 +68,14 @@ def ascii_matrix_to_hex(matrix):
         hex_row = ["{:02x}".format(byte) for byte in row]
         hex_matrix.append(hex_row)
     return hex_matrix
+
+
+def ascii_matrix_to_hex_for_list(ascii_list):
+    """
+    Convert a list of ASCII integer values to a 4x4 matrix of hexadecimal strings.
+    """
+    hex_list = ["{:02x}".format(byte) for byte in ascii_list]
+    return hex_list
 
 
 def add_round_key(state, subkey):

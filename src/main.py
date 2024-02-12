@@ -79,8 +79,32 @@ print("state_in_ascii_after_mix_columns\n", state_in_ascii_after_mix_columns)
 state_in_hex_after_mix_columns = ascii_matrix_to_hex(state_in_ascii_after_mix_columns)
 print("state_in_hex_after_mix_columns:\n", state_in_hex_after_mix_columns)
 
-# Part 6 - Add all data printed using the statements above in a file
-output_file_path = "data/output.txt"
+# Part 6 - another add_round_key
+subkey_1_hex_string = subkeys[1]
+print("subkey_1:\n", subkey_1_hex_string)
+
+subkey_1_matrix_in_ascii_values = hex_to_ascii_matrix(subkey_1_hex_string)
+print("subkey_1_matrix:\n", subkey_1_matrix_in_ascii_values)
+
+subkey_1_matrix_in_hex_values = ascii_matrix_to_hex(subkey_1_matrix_in_ascii_values)
+print("subkey_0_matrix_in_hex_values:\n", subkey_1_matrix_in_hex_values)
+
+state_in_ascii_after_add_round_key_2 = add_round_key(
+    state_in_ascii_after_mix_columns, subkey_1_matrix_in_ascii_values
+)
+print(
+    "state_in_ascii_after_add_round_key_2:\n",
+    state_in_ascii_after_add_round_key_2,
+)
+
+state_in_hex_after_add_round_key_2 = ascii_matrix_to_hex(
+    state_in_ascii_after_add_round_key_2
+)
+print("state_in_hex_after_add_round_key_2:\n", state_in_hex_after_add_round_key_2)
+
+
+# Part 7 - Add all data printed using the statements above in a file
+output_file_path = "data/result.txt"
 output_data = [
     "plaintext_file_path:",
     plaintext_file_path,
@@ -120,6 +144,16 @@ output_data = [
     state_in_ascii_after_mix_columns,
     "state_in_hex_after_mix_columns:",
     state_in_hex_after_mix_columns,
+    "subkey_1:",
+    subkey_1_hex_string,
+    "subkey_1_matrix_in_ascii_values:",
+    subkey_1_matrix_in_ascii_values,
+    "subkey_1_matrix_in_hex_values:",
+    subkey_1_matrix_in_hex_values,
+    "state_in_ascii_after_add_round_key_2:",
+    state_in_ascii_after_add_round_key_2,
+    "state_in_hex_after_add_round_key_2:",
+    state_in_hex_after_add_round_key_2,
 ]
 
 write_to_file(output_file_path, output_data)

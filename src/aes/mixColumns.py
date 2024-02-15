@@ -34,17 +34,17 @@ def mix_columns(state):
     return mixed_state.tolist()
 
 
-def gf_mul(a, b):
+def gf_mul(a, b):  # Source: StackOverflow
     """
     Galois Field (GF(2^8)) multiplication of two numbers.
     """
-    p = 0
-    for _ in range(8):
-        if b & 1:
-            p ^= a
-        hi_bit_set = a & 0x80
-        a <<= 1
-        if hi_bit_set:
-            a ^= 0x1B  # AES irreducible polynomial
-        b >>= 1
-    return p
+    p = 0b100011011
+    m = 0
+    for i in range(8):
+        m = m << 1
+        if m & 0b100000000:
+            m = m ^ p
+        if b & 0b010000000:
+            m = m ^ a
+        b = b << 1
+    return m

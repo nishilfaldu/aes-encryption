@@ -328,7 +328,7 @@
         "kind": 2,
         "importPath": "src.aes.mixColumns",
         "description": "src.aes.mixColumns",
-        "peekOfCode": "def gf_mul(a, b):\n    \"\"\"\n    Galois Field (GF(2^8)) multiplication of two numbers.\n    \"\"\"\n    p = 0\n    for _ in range(8):\n        if b & 1:\n            p ^= a\n        hi_bit_set = a & 0x80\n        a <<= 1",
+        "peekOfCode": "def gf_mul(a, b):  # Source: StackOverflow\n    \"\"\"\n    Galois Field (GF(2^8)) multiplication of two numbers.\n    \"\"\"\n    p = 0b100011011\n    m = 0\n    for i in range(8):\n        m = m << 1\n        if m & 0b100000000:\n            m = m ^ p",
         "detail": "src.aes.mixColumns",
         "documentation": {}
     },

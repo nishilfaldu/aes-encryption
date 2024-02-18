@@ -34,7 +34,8 @@ def mix_columns(state):
     return mixed_state.tolist()
 
 
-def gf_mul(a, b):  # Source: StackOverflow
+def gf_mul(a, b):
+    # Source: StackOverflow
     """
     Galois Field (GF(2^8)) multiplication of two numbers.
     """
